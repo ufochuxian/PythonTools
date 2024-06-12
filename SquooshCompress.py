@@ -72,14 +72,16 @@ def compress_images(input_dir, output_dir, quality=75):
 
             except subprocess.CalledProcessError as e:
                 print(f"Error compressing {input_file}: {e}")
-    move_files_to_total(output_dir,total_directory)
+    move_files_to_total(output_dir, all_compressed_files_dir)
 
 
 if __name__ == "__main__":
     input_directory = "/Users/chenjianxiang/Downloads/input"
     output_directory = "/Users/chenjianxiang/Downloads/output"
-    total_directory = "/Users/chenjianxiang/Downloads/all_compressed_files"
+    all_compressed_files_dir = "/Users/chenjianxiang/Downloads/all_compressed_files"
     if os.path.exists(output_directory):
         shutil.rmtree(output_directory)
+    if os.path.exists(all_compressed_files_dir):
+        shutil.rmtree(all_compressed_files_dir)
     if os.path.exists(input_directory):
         compress_images(input_directory, output_directory)
