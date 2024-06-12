@@ -15,7 +15,7 @@ def compress_images(input_dir, output_dir, quality=75):
     for file in files:
         input_file = os.path.join(input_dir, file)
         temp_output_file = os.path.join(output_dir, "temp_" + file)
-        final_output_file = os.path.join(output_dir, file)
+        final_output_file = os.path.join(output_dir,file)
 
         # 检查是否为文件而非子目录
         if os.path.isfile(input_file):
@@ -50,4 +50,7 @@ def compress_images(input_dir, output_dir, quality=75):
 if __name__ == "__main__":
     input_directory = "/Users/chenjianxiang/Downloads/input"
     output_directory = "/Users/chenjianxiang/Downloads/output"
-    compress_images(input_directory, output_directory)
+    if os.path.exists(output_directory):
+        shutil.rmtree(output_directory)
+    if os.path.exists(input_directory):
+        compress_images(input_directory, output_directory)
